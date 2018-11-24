@@ -30,10 +30,15 @@ spec:
           - name: bigben
             image: cablespaghetti/bigben
             env:
-              MASTODON_INSTANCE: mastodon.org.uk
-              MASTODON_USERNAME: bigben
-              MASTODON_ACCESS_TOKEN: <my token>
-              MASTODON_CLIENT_ID: <my client id>
-              MASTODON_CLIENT_SECRET: <my client secret>
+              - name: MASTODON_INSTANCE
+                value: mastodon.org.uk
+              - name: MASTODON_USERNAME
+                value: bigben
+              - name: MASTODON_ACCESS_TOKEN
+                value: <my access token>
+              - name: MASTODON_CLIENT_ID
+                value: <my client id>
+              - name: MASTODON_CLIENT_SECRET
+                value: <my client secret>
           restartPolicy: OnFailure
 ```
