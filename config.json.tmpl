@@ -1,0 +1,18 @@
+{
+ "apps": {
+  "${MASTODON_INSTANCE}": {
+   "instance": "${MASTODON_INSTANCE}",
+   "base_url": "https://${MASTODON_INSTANCE}",
+   "client_id": "${MASTODON_CLIENT_ID}",
+   "client_secret": "${MASTODON_CLIENT_SECRET}"
+  }
+ },
+ "users": {
+  "${MASTODON_USERNAME}@${MASTODON_INSTANCE}": {
+   "instance": "${MASTODON_INSTANCE}",
+   "username": "${MASTODON_USERNAME}",
+   "access_token": "${MASTODON_ACCESS_TOKEN}"
+  }
+ },
+ "active_user": "${MASTODON_USERNAME}@${MASTODON_INSTANCE}"
+}
