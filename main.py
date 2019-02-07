@@ -1,6 +1,7 @@
 from mastodon import Mastodon
 import datetime
 import os
+import pytz
 
 
 def handler(event, context):
@@ -16,6 +17,7 @@ def handler(event, context):
         api_base_url=api_base_url
     )
 
-    hour = int(datetime.datetime.utcnow().strftime('%I'))
+    hour = int(datetime.datetime.now(pytz.timezone('Europe/London')).strftime('%I'))
+    print(str(hour))
     photo = mastodon.media_post('images/' + str(hour) + '.jpg')
     mastodon.status_post(('BONG ' * hour).rstrip(), media_ids=photo)

@@ -6,7 +6,7 @@ Runs as an AWS Lambda for great serverless justice
 ## Environment Varibles
 
 * MASTODON_BASE_URL - The hostname of the mastodon instance e.g. https://mastodon.org.uk
-* MASTODON_ACCESS_TOKEN - A valid mmastodon access token
+* MASTODON_ACCESS_TOKEN - A valid mastodon access token
 
 ## Initial Command To Deploy Lambda
 ```
