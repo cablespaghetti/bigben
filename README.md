@@ -3,6 +3,16 @@ Powers https://mastodon.org.uk/@bigben
 
 Runs as an AWS Lambda for great serverless justice
 
+## You will need
+
+* One Python 3.6 installation
+* One Bash shell
+* One virtualenv utility
+* One zip utility
+* One Mastodon access token
+* One AWS account with ready-made IAM Role for Lambda Execution with the AWSLambdaBasicExecutionRole policy attached
+* One installed and configured AWS CLI tool with the relevant permissions to create a Lambda
+
 ## Environment Varibles
 
 * MASTODON_BASE_URL - The hostname of the mastodon instance e.g. https://mastodon.org.uk
