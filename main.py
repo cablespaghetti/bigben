@@ -20,4 +20,5 @@ def handler(event, context):
     hour = int(datetime.datetime.now(pytz.timezone('Europe/London')).strftime('%I'))
     print(str(hour))
     photo = mastodon.media_post('images/' + str(hour) + '.jpg')
-    mastodon.status_post(('BONG ' * hour).rstrip(), media_ids=photo)
+    sadmsg = '*Sadly and quietly to self: '
+    mastodon.status_post(sadmsg + ('BONG ' * hour).rstrip(), media_ids=photo)
