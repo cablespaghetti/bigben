@@ -5,7 +5,7 @@ Runs as an AWS Lambda for great serverless justice
 
 ## You will need
 
-* One Python 3.6 installation
+* One Python 3.9 installation
 * One Bash shell
 * One virtualenv utility
 * One zip utility

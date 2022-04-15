@@ -16,8 +16,19 @@ def handler(event, context):
         access_token=access_token,
         api_base_url=api_base_url
     )
+    now = datetime.datetime.now(pytz.timezone('Europe/London'))
+    hour = now.hour % 12
 
-    hour = int(datetime.datetime.now(pytz.timezone('Europe/London')).strftime('%I'))
-    print(str(hour))
-    photo = mastodon.media_post('images/' + str(hour) + '.jpg')
+    if now.month == 1 and now.day == 1:
+        filename = "newyear.jpg"
+    else:
+        filename = f'{hour}.jpg'
+
+    print(filename)
+
+    photo = mastodon.media_post('images/' + filename, "image/jpeg")
     mastodon.status_post(('BONG ' * hour).rstrip(), media_ids=photo)
+
+
+if __name__ == "__main__":
+    handler(None, None)
