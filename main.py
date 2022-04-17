@@ -27,7 +27,3 @@ def handler(event, context):
 
     photo = mastodon.media_post("images/" + filename, "image/jpeg")
     mastodon.status_post(("BONG " * hour).rstrip(), media_ids=photo)
-
-
-if __name__ == "__main__":
-    handler(None, None)
