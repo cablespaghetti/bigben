@@ -1,7 +1,7 @@
-from unittest import TestCase, mock
-from freezegun import freeze_time
-
 import os
+
+from freezegun import freeze_time
+from unittest import TestCase, mock
 
 from main import handler
 
