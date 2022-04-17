@@ -4,7 +4,7 @@ import os
 import pytz
 
 
-def handler(event, context):
+def get_mastodon():
     access_token = os.environ.get("MASTODON_ACCESS_TOKEN", "")
     api_base_url = os.environ.get("MASTODON_BASE_URL", "")
 
@@ -14,16 +14,30 @@ def handler(event, context):
         )
         exit(1)
 
-    mastodon = Mastodon(access_token=access_token, api_base_url=api_base_url)
-    now = datetime.datetime.now(pytz.timezone("Europe/London"))
-    hour = now.hour % 12
+    return Mastodon(access_token=access_token, api_base_url=api_base_url)
 
-    if now.month == 1 and now.day == 1 and now.hour == 0:
+
+def get_time_in_london():
+    now = datetime.datetime.now(pytz.timezone("Europe/London"))
+    return now.hour % 12, now.day, now.month
+
+
+def get_big_ben_image_path(hour, day, month):
+    if month == 1 and day == 1 and hour == 0:
         filename = "newyear.jpg"
     else:
         filename = f"{hour}.jpg"
 
-    print(filename)
+    return "images/" + filename
 
-    photo = mastodon.media_post("images/" + filename, "image/jpeg")
+
+def post_to_mastodon(image_path, hour):
+    mastodon = get_mastodon()
+    photo = mastodon.media_post(image_path, "image/jpeg")
     mastodon.status_post(("BONG " * hour).rstrip(), media_ids=photo)
+
+
+def handler(event, context):
+    hour, day, month = get_time_in_london()
+    image_path = get_big_ben_image_path(hour, day, month)
+    post_to_mastodon(image_path, hour)
