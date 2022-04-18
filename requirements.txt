@@ -1,3 +1,0 @@
-Mastodon.py
-pytz
-freezegun
