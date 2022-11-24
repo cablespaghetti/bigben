@@ -22,7 +22,11 @@ class BigBenTestSuite(TestCase):
     def test_happy_case(self, FakeMastodon):
         mastodon = FakeMastodon()
         handler(None, None)
-        mastodon.media_post.assert_called_once_with("images/10.jpg", "image/jpeg")
+        mastodon.media_post.assert_called_once_with(
+            "images/10.jpg",
+            "image/jpeg",
+            description="A photo of the Great Clock of Westminster showing ten o'clock"
+        )
         mastodon.status_post.assert_called_once_with(
             "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG", media_ids=mock.ANY
         )
@@ -36,7 +40,11 @@ class BigBenTestSuite(TestCase):
     def test_midnight_case(self, FakeMastodon):
         mastodon = FakeMastodon()
         handler(None, None)
-        mastodon.media_post.assert_called_once_with("images/12.jpg", "image/jpeg")
+        mastodon.media_post.assert_called_once_with(
+            "images/12.jpg",
+            "image/jpeg",
+            description="A photo of the Great Clock of Westminster showing twelve o'clock"
+        )
         mastodon.status_post.assert_called_once_with(
             "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG",
             media_ids=mock.ANY,
@@ -51,7 +59,11 @@ class BigBenTestSuite(TestCase):
     def test_happy_new_year_case(self, FakeMastodon):
         mastodon = FakeMastodon()
         handler(None, None)
-        mastodon.media_post.assert_called_once_with("images/newyear.jpg", "image/jpeg")
+        mastodon.media_post.assert_called_once_with(
+            "images/newyear.jpg",
+            "image/jpeg",
+            description="A photo of the Great Clock of Westminster with fireworks and the London Eye in the background"
+        )
         mastodon.status_post.assert_called_once_with(
             "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG",
             media_ids=mock.ANY,

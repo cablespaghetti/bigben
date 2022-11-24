@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 "mastodon.py" = "*"
 pytz = "*"
+num2words = "*"
 
 [dev-packages]
 freezegun = "*"

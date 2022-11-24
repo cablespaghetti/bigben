@@ -2,6 +2,7 @@ from mastodon import Mastodon
 import datetime
 import os
 import pytz
+from num2words import num2words
 
 
 def get_mastodon() -> Mastodon:
@@ -51,19 +52,36 @@ def get_big_ben_image_path(hour: int, day: int, month: int) -> str:
     return "images/" + filename
 
 
-def post_to_mastodon(image_path: str, hour: int):
+def post_to_mastodon(image_path: str, hour: int, newyear=False):
     """Post to Mastodon
 
     Args:
         image_path (str): The path of a JPEG image
         hour (int): The time to bong for
+        newyear (bool): Whether it is New Year or not
     """
     mastodon = get_mastodon()
-    photo = mastodon.media_post(image_path, "image/jpeg")
+
+    if newyear:
+        description = f"A photo of the Great Clock of Westminster with fireworks and the London Eye in the background"
+    else:
+        description = f"A photo of the Great Clock of Westminster showing {num2words(hour)} o'clock"
+
+    photo = mastodon.media_post(
+        image_path,
+        "image/jpeg",
+        description=description
+    )
     mastodon.status_post(("BONG " * hour).rstrip(), media_ids=photo)
 
 
 def handler(event, context):
     hour, day, month = get_time_in_london()
     image_path = get_big_ben_image_path(hour, day, month)
-    post_to_mastodon(image_path, hour)
+
+    if image_path == "images/newyear.jpg":
+        newyear = True
+    else:
+        newyear = False
+
+    post_to_mastodon(image_path, hour, newyear)
