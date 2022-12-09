@@ -25,11 +25,11 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:0d9c601124e5a6ba9712dbc60d9c53c21e34f5f641fe83002317394311bdce14",
-                "sha256:90c1a32f1d68f940488354e36370f6cca89f0f106db09518524c88d6ed83f382"
+                "sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3",
+                "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"
             ],
-            "markers": "python_version >= '3.6'",
-            "version": "==2022.9.24"
+            "index": "pypi",
+            "version": "==2022.12.7"
         },
         "charset-normalizer": {
             "hashes": [
@@ -63,11 +63,11 @@
         },
         "mastodon.py": {
             "hashes": [
-                "sha256:d97d855131fafcd9d0091b8a5d10130b3eaf673bbde45bce1d13037d1d6a9106",
-                "sha256:ea57f16bb9c79c810c122867ecc706e1f272b4e68614b6069a86d62a911ae4e7"
+                "sha256:31624c881318682577b76c082a9e8e4114a42e80ad3652c6bc00e5c658cea1a7",
+                "sha256:f5af3bb16df6409bed0bb8b97543d7979237a6a2a2a4bc484dec261c36918668"
             ],
             "index": "pypi",
-            "version": "==1.7.0"
+            "version": "==1.8.0"
         },
         "num2words": {
             "hashes": [
