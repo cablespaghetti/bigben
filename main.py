@@ -23,28 +23,30 @@ def get_mastodon() -> Mastodon:
     return Mastodon(access_token=access_token, api_base_url=api_base_url)
 
 
-def get_time_in_london() -> tuple[int, int, int]:
+def get_time_in_london() -> tuple[int, int, int, bool]:
     """Gets the current time in London right now
 
     Returns:
-        tuple[int, int, int]: A tuple with the hour (12 hour clock), day of the month and month of the year
+        tuple[int, int, int, bool]: A tuple with the hour (12 hour clock), day of the month, month of the year and whether it's afternoon
     """
     now = datetime.datetime.now(pytz.timezone("Europe/London"))
-    return int(now.strftime("%I")), now.day, now.month
+    pm = now.strftime("%p") == "PM"
+    return int(now.strftime("%I")), now.day, now.month, pm
 
 
-def get_big_ben_image_path(hour: int, day: int, month: int) -> str:
+def get_big_ben_image_path(hour: int, day: int, month: int, pm: bool) -> str:
     """Gets an image of Big Ben given the time
 
     Args:
         hour (int): The hour in London (12 hour clock)
         day (int): The day of the month in London
         month (int): The month of the year in London
+        pm (bool): A boolean to show if it's afternoon
 
     Returns:
         str: The relative path of a JPEG image
     """
-    if month == 1 and day == 1 and hour == 12:
+    if month == 1 and day == 1 and hour == 12 and not pm:
         filename = "newyear.jpg"
     else:
         filename = f"{hour}.jpg"
@@ -72,8 +74,8 @@ def post_to_mastodon(image_path: str, hour: int, newyear=False):
 
 
 def handler(event, context):
-    hour, day, month = get_time_in_london()
-    image_path = get_big_ben_image_path(hour, day, month)
+    hour, day, month, pm = get_time_in_london()
+    image_path = get_big_ben_image_path(hour, day, month, pm)
 
     if image_path == "images/newyear.jpg":
         newyear = True
