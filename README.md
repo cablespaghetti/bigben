@@ -5,7 +5,7 @@ Runs as an AWS Lambda for great serverless justice
 
 ## You will need
 
-* One Python 3.9 installation
+* One Python 3.13 installation
 * One Bash shell
 * One virtualenv utility
 * One zip utility
@@ -21,7 +21,7 @@ Runs as an AWS Lambda for great serverless justice
 ## Initial Command To Deploy Lambda
 ```
 ./buildzip.sh
-aws lambda create-function --function-name big-ben --runtime python3.9 --handler main.handler --timeout 15 --zip-file fileb://bigben.zip --role <my-iam-role-arn>
+aws lambda create-function --function-name big-ben --runtime python3.13 --handler main.handler --timeout 15 --zip-file fileb://bigben.zip --role <my-iam-role-arn>
 ```
 
 ## Updating the code

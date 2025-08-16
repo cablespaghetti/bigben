@@ -70,7 +70,8 @@ def post_to_mastodon(image_path: str, hour: int, newyear=False):
         description = f"A photo of the Great Clock of Westminster showing {num2words(hour)} o'clock"
 
     photo = mastodon.media_post(image_path, "image/jpeg", description=description)
-    mastodon.status_post(("BONG " * hour).rstrip(), media_ids=photo)
+    post_text = ("BONG, " * hour)[:-2]
+    mastodon.status_post(post_text, media_ids=photo)
 
 
 def handler(event, context):
