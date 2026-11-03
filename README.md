@@ -40,19 +40,3 @@ Deployment is handled by GitHub Actions in `.github/workflows/deploy.yml`:
 
 * Pull requests run `mise run check`.
 * Pushes to `main` run the checks and then `mise run deploy`.
-
-### First deploy
-
-The function is managed by CloudFormation with the fixed name `big-ben`. If you still have a manually-created `big-ben` Lambda, delete it before the first stack deploy so CloudFormation can create the replacement:
-
-```sh
-aws lambda delete-function --function-name big-ben --region us-east-1
-```
-
-Then push to `main`, or deploy locally with AWS credentials and the Mastodon environment variables set:
-
-```sh
-export MASTODON_BASE_URL=https://mastodon.org.uk
-export MASTODON_ACCESS_TOKEN=...
-mise run deploy
-```

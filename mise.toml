@@ -8,7 +8,7 @@ awscli = "2.39"
 aws-sam-cli = "1.171"
 
 [env]
-AWS_REGION = "us-east-1"
+AWS_REGION = "eu-west-1"
 SAM_ARTIFACT_BUCKET = "bigben-sam-artifacts-033667237508"
 
 [tasks.install]
