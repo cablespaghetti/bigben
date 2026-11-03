@@ -3,7 +3,7 @@ lockfile = false
 
 [tools]
 python = "3.14"
-pipenv = "2026.10"
+uv = "0.13"
 awscli = "2.39"
 aws-sam-cli = "1.171"
 
@@ -12,18 +12,18 @@ AWS_REGION = "us-east-1"
 SAM_ARTIFACT_BUCKET = "bigben-sam-artifacts-033667237508"
 
 [tasks.install]
-description = "Install project dependencies from Pipfile.lock"
-run = "pipenv sync --dev"
+description = "Install project dependencies from uv.lock"
+run = "uv sync --locked"
 
 [tasks.lint]
 description = "Check formatting with Black"
 depends = ["install"]
-run = "pipenv run black --check main.py test_main.py"
+run = "uv run black --check main.py test_main.py"
 
 [tasks.test]
 description = "Run the test suite"
 depends = ["install"]
-run = "pipenv run python -m unittest -v"
+run = "uv run python -m unittest -v"
 
 [tasks.check]
 description = "Run lint and tests"
@@ -32,7 +32,7 @@ run = "echo 'All checks passed'"
 
 [tasks.requirements]
 description = "Export locked production requirements for SAM"
-run = "pipenv requirements > requirements.txt"
+run = "uv export --locked --no-dev --no-hashes --output-file requirements.txt"
 
 [tasks.build]
 description = "Build the Lambda package with SAM"

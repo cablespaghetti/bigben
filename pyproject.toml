@@ -1,0 +1,16 @@
+[project]
+name = "bigben"
+version = "0.1.0"
+description = "Posts a photo of Big Ben and bongs to Mastodon"
+requires-python = ">=3.14"
+dependencies = [
+    "mastodon.py",
+    "num2words",
+    "pytz",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "freezegun",
+]

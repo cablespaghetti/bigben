@@ -8,8 +8,8 @@ London to Mastodon, with a special post for New Year.
 
 ## Requirements
 
-* [mise](https://mise.jdx.dev/) - installs Python 3.14, Pipenv, the AWS CLI and
-  the AWS SAM CLI
+* [mise](https://mise.jdx.dev/) - installs Python 3.14, uv, the AWS CLI and the
+  AWS SAM CLI
 * One Mastodon access token
 * An AWS account you can deploy to (CI assumes the
   `github-actions-bigben` IAM role via GitHub OIDC)
@@ -30,7 +30,7 @@ mise run check      # sync dependencies, run Black and the tests
 
 | Task | Description |
 | --- | --- |
-| `mise run install` | Install dependencies from `Pipfile.lock` |
+| `mise run install` | Install dependencies from `uv.lock` |
 | `mise run lint` | Check formatting with Black |
 | `mise run test` | Run the unit tests |
 | `mise run check` | Run lint and tests |

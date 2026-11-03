@@ -1,5 +1,6 @@
 .vscode/
 venv/
+.venv/
 .idea/
 *.zip
 __pycache__/
