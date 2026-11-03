@@ -33,4 +33,4 @@ Resources:
         ScheduleEvent:
           Type: ScheduleV2
           Properties:
-            ScheduleExpression: "cron(0 * * * * *"
+            ScheduleExpression: "cron(0 * * * * *)"
