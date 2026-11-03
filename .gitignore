@@ -3,5 +3,7 @@ venv/
 .idea/
 *.zip
 __pycache__/
+.pytest_cache/
 requirements.txt
+.aws-sam/
 .DS_Store

@@ -1,0 +1,56 @@
+[tools]
+python = "3.14"
+pipenv = "latest"
+awscli = "latest"
+aws-sam-cli = "latest"
+
+[env]
+AWS_REGION = "us-east-1"
+SAM_ARTIFACT_BUCKET = "bigben-sam-artifacts-033667237508"
+
+[tasks.install]
+description = "Install project dependencies from Pipfile.lock"
+run = "pipenv sync --dev"
+
+[tasks.lint]
+description = "Check formatting with Black"
+depends = ["install"]
+run = "pipenv run black --check main.py test_main.py"
+
+[tasks.test]
+description = "Run the test suite"
+depends = ["install"]
+run = "pipenv run python -m unittest -v"
+
+[tasks.check]
+description = "Run lint and tests"
+depends = ["lint", "test"]
+run = "echo 'All checks passed'"
+
+[tasks.requirements]
+description = "Export locked production requirements for SAM"
+run = "pipenv requirements > requirements.txt"
+
+[tasks.build]
+description = "Build the Lambda package with SAM"
+depends = ["requirements"]
+run = "sam build"
+
+[tasks.ensure-bucket]
+description = "Create the SAM artifact bucket if it does not exist"
+run = 'aws s3api head-bucket --bucket "$SAM_ARTIFACT_BUCKET" 2>/dev/null || aws s3 mb "s3://$SAM_ARTIFACT_BUCKET"'
+
+[tasks.deploy]
+description = "Deploy the Lambda stack with SAM"
+depends = ["build", "ensure-bucket"]
+run = '''
+sam deploy \
+  --no-confirm-changeset \
+  --no-fail-on-empty-changeset \
+  --stack-name big-ben \
+  --s3-bucket "$SAM_ARTIFACT_BUCKET" \
+  --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND \
+  --parameter-overrides \
+    MastodonAccessToken="$MASTODON_ACCESS_TOKEN" \
+    MastodonBaseUrl="$MASTODON_BASE_URL"
+'''

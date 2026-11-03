@@ -19,6 +19,7 @@ Resources:
   BigBenFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: big-ben
       CodeUri: .
       Environment:
         Variables:

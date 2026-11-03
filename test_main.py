@@ -28,7 +28,8 @@ class BigBenTestSuite(TestCase):
             description="A photo of the Great Clock of Westminster showing ten o'clock",
         )
         mastodon.status_post.assert_called_once_with(
-            "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG", media_ids=mock.ANY
+            "BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG",
+            media_ids=mock.ANY,
         )
 
     @mock.patch.dict(
@@ -46,7 +47,7 @@ class BigBenTestSuite(TestCase):
             description="A photo of the Great Clock of Westminster showing twelve o'clock",
         )
         mastodon.status_post.assert_called_once_with(
-            "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG",
+            "BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG",
             media_ids=mock.ANY,
         )
 
@@ -65,6 +66,6 @@ class BigBenTestSuite(TestCase):
             description="A photo of the Great Clock of Westminster with fireworks and the London Eye in the background",
         )
         mastodon.status_post.assert_called_once_with(
-            "BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG BONG",
+            "BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG, BONG",
             media_ids=mock.ANY,
         )
