@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Big Ben Mastodon bot
+
+Parameters:
+  MastodonAccessToken:
+    Type: String
+    NoEcho: true
+  MastodonBaseUrl:
+    Type: String
+
+Globals:
+  Function:
+    Runtime: python3.14
+    Handler: main.handler
+    Timeout: 15
+
+Resources:
+  BigBenFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Environment:
+        Variables:
+          MASTODON_ACCESS_TOKEN: !Ref MastodonAccessToken
+          MASTODON_BASE_URL: !Ref MastodonBaseUrl
+      Policies:
+        - AWSLambdaBasicExecutionRole
