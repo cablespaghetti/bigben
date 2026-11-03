@@ -2,17 +2,13 @@
 
 Powers https://mastodon.org.uk/@bigben
 
-Runs as an AWS Lambda for great serverless justice. On each invocation it posts
-a photo of the Great Clock of Westminster and a "BONG" for the current hour in
-London to Mastodon, with a special post for New Year.
+Runs as an AWS Lambda for great serverless justice.
 
 ## Requirements
 
-* [mise](https://mise.jdx.dev/) - installs Python 3.14, uv, the AWS CLI and the
-  AWS SAM CLI
+* [mise](https://mise.jdx.dev/) - installs Python 3.14, uv, the AWS CLI and the AWS SAM CLI
 * One Mastodon access token
-* An AWS account you can deploy to (CI assumes the
-  `github-actions-bigben` IAM role via GitHub OIDC)
+* An AWS account you can deploy to (CI assumes the `github-actions-bigben` IAM role via GitHub OIDC)
 
 ## Setup
 
@@ -40,33 +36,20 @@ mise run check      # sync dependencies, run Black and the tests
 
 ## Deployment
 
-Deployment is handled by GitHub Actions in
-`.github/workflows/deploy.yml`:
+Deployment is handled by GitHub Actions in `.github/workflows/deploy.yml`:
 
 * Pull requests run `mise run check`.
 * Pushes to `main` run the checks and then `mise run deploy`.
 
-The workflow authenticates to AWS with GitHub OIDC (no long-lived keys) using
-the `arn:aws:iam::033667237508:role/github-actions-bigben` role. The
-`MASTODON_ACCESS_TOKEN` and `MASTODON_BASE_URL` secrets live in the `production`
-GitHub environment.
-
-The SAM stack is named `big-ben` and deploys to `us-east-1`, writing build
-artifacts to the `bigben-sam-artifacts-033667237508` S3 bucket (created on the
-first deploy if missing).
-
 ### First deploy
 
-The function is managed by CloudFormation with the fixed name `big-ben`. If you
-still have a manually-created `big-ben` Lambda, delete it before the first
-stack deploy so CloudFormation can create the replacement:
+The function is managed by CloudFormation with the fixed name `big-ben`. If you still have a manually-created `big-ben` Lambda, delete it before the first stack deploy so CloudFormation can create the replacement:
 
 ```sh
 aws lambda delete-function --function-name big-ben --region us-east-1
 ```
 
-Then push to `main`, or deploy locally with AWS credentials and the Mastodon
-environment variables set:
+Then push to `main`, or deploy locally with AWS credentials and the Mastodon environment variables set:
 
 ```sh
 export MASTODON_BASE_URL=https://mastodon.org.uk

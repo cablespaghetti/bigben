@@ -21,6 +21,8 @@ Resources:
     Properties:
       FunctionName: big-ben
       CodeUri: .
+      Architectures:
+        - arm64
       Environment:
         Variables:
           MASTODON_ACCESS_TOKEN: !Ref MastodonAccessToken
