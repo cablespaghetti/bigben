@@ -9,7 +9,7 @@ aws-sam-cli = "1.171"
 
 [env]
 AWS_REGION = "eu-west-1"
-SAM_ARTIFACT_BUCKET = "bigben-sam-artifacts-033667237508"
+SAM_ARTIFACT_BUCKET = "big-ben-sam-artifacts-033667237508"
 
 [tasks.install]
 description = "Install project dependencies from uv.lock"
