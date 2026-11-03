@@ -29,3 +29,8 @@ Resources:
           MASTODON_BASE_URL: !Ref MastodonBaseUrl
       Policies:
         - AWSLambdaBasicExecutionRole
+      Events:
+        ScheduleEvent:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: "cron(0 * * * * *"
