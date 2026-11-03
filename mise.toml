@@ -1,8 +1,11 @@
+[settings]
+lockfile = false
+
 [tools]
 python = "3.14"
-pipenv = "latest"
-awscli = "latest"
-aws-sam-cli = "latest"
+pipenv = "2026.10"
+awscli = "2.39"
+aws-sam-cli = "1.171"
 
 [env]
 AWS_REGION = "us-east-1"

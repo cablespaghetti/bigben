@@ -17,7 +17,7 @@ London to Mastodon, with a special post for New Year.
 ## Setup
 
 ```sh
-mise install        # install the pinned tools
+mise install        # install the required tools
 mise run check      # sync dependencies, run Black and the tests
 ```
 
