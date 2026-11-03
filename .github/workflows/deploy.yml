@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.14"
       - run: pip install pipenv
-      - run: pipenv install --dev --deploy
+      - run: pipenv sync --dev
       - run: pipenv run black --check main.py test_main.py
       - run: pipenv run pytest
 
