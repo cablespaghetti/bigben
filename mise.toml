@@ -2,7 +2,7 @@
 lockfile = false
 
 [tools]
-python = "3.14"
+python = "3.15.2"
 uv = "0.13"
 awscli = "2.39"
 aws-sam-cli = "1.171"
