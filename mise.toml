@@ -4,7 +4,7 @@ lockfile = false
 [tools]
 python = "3.14"
 uv = "0.13"
-awscli = "2.39"
+awscli = "2.40.2"
 aws-sam-cli = "1.171"
 
 [env]
