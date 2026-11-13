@@ -2,10 +2,10 @@
 lockfile = false
 
 [tools]
-python = "3.14"
+python = "3.15.2"
 uv = "0.13"
-awscli = "2.39"
-aws-sam-cli = "1.171"
+awscli = "2.40.3"
+aws-sam-cli = "1.172.1"
 
 [env]
 AWS_REGION = "eu-west-1"
