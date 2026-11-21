@@ -4,8 +4,8 @@ lockfile = false
 [tools]
 python = "3.15.2"
 uv = "0.13"
-awscli = "2.41.1"
-aws-sam-cli = "1.173.0"
+awscli = "2.42.1"
+aws-sam-cli = "1.174.0"
 
 [env]
 AWS_REGION = "eu-west-1"
